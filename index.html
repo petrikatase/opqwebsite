@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="al">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +10,8 @@
 <body>
   <div class="embroidery-bg">
     <div class="language-switcher">
-      <button onclick="setLanguage('en')">English</button>
-      <button onclick="setLanguage('al')">Shqip</button>
+      <button onclick="setSiteLanguage('en')">English</button>
+      <button onclick="setSiteLanguage('al')">Shqip</button>
     </div>
 
     <header>
@@ -49,7 +49,8 @@
 
   <section id="join">
     <h2 data-i18n="section_join">Join Us</h2>
-    <iframe class="airtable-embed" src="https://airtable.com/embed/appfL6OvLQDkEJiZx/pagNEBaDzNmSOFwWT/form" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+    <div id="membership-form-container"></div>
+
   </section>
 
   <section id="contact">
@@ -76,32 +77,66 @@
       try {
         const res = await fetch('lang/' + lang + '.json');
         const translations = await res.json();
-
+  
+        document.title = translations.title;
+        document.getElementById('dynamic-description')?.setAttribute('content', translations.description);
+  
         document.querySelectorAll('[data-i18n]').forEach(el => {
           const key = el.getAttribute('data-i18n');
-          if (translations[key]) el.innerText = translations[key];
+          if (translations[key]) el.textContent = translations[key];
         });
-
+  
         document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
           const key = el.getAttribute('data-i18n-placeholder');
           if (translations[key]) el.placeholder = translations[key];
         });
-
-        const metaRes = await fetch('lang/meta.json');
-        const meta = await metaRes.json();
-        document.title = meta[lang].title;
-        document.querySelector('#dynamic-description').setAttribute('content', meta[lang].description);
-
-      } catch (e) {
-        console.error("Translation/meta file error:", e);
+  
+        // After translations load, also load the form
+        setFormUrl(translations.membership_form_url);
+  
+      } catch (err) {
+        console.error('❌ Error loading translations or form:', err);
       }
     }
-
-    function toggleMenu() {
-      document.getElementById('navbar').classList.toggle('open');
+  
+    function setFormUrl(formUrl) {
+      const container = document.getElementById('membership-form-container');
+      if (!container) {
+        console.error('❌ Form container not found.');
+        return;
+      }
+  
+      container.innerHTML = ''; // clear old iframe
+  
+      const iframe = document.createElement('iframe');
+      iframe.className = 'airtable-embed';
+      iframe.src = formUrl;
+      iframe.width = '100%';
+      iframe.height = '533';
+      iframe.frameBorder = '0';
+      iframe.style = 'background: transparent; border: 1px solid #ccc;';
+      iframe.setAttribute('onmousewheel', '');
+  
+      container.appendChild(iframe);
     }
-
-    setLanguage('en');
+  
+    function setSiteLanguage(lang) {
+      localStorage.setItem('preferredLang', lang);
+      setLanguage(lang);
+    }
+  
+    function toggleMenu() {
+      document.getElementById('navbar')?.classList.toggle('open');
+    }
+  
+    // Load preferred language or default to Albanian
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('preferredLang');
+      const browserLang = navigator.language.startsWith('sq') ? 'al' : 'en';
+      const langToLoad = savedLang || browserLang || 'al';
+      setSiteLanguage(langToLoad);
+    });
   </script>
+
 </body>
 </html>
