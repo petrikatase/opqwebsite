@@ -16,6 +16,12 @@ body {
     position: relative;
     color: black;
   }
+
+  .embroidery-bg.bottom-ribbon {
+    background-position: bottom center;
+    background-size: cover;
+  }
+  
   
   header.embroidery-bg {
     background-position: left top;
