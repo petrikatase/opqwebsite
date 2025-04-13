@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="title">Organizata Përparimi Qytezë</title>
+  <title id="dynamic-title">Organizata Përparimi Qytezë</title>
+  <meta name="description" id="dynamic-description" content="">
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -84,9 +86,17 @@
       } catch (e) {
         console.error("Translation file not found or invalid JSON", e);
       }
+      async function setMeta(lang) {
+        const res = await fetch('lang/meta.json');
+        const meta = await res.json();
+        document.title = meta[lang].title;
+        document.querySelector('#dynamic-description').setAttribute('content', meta[lang].description);
+      }
+
     }
 
     setLanguage('en');
+    setMeta('en');
   </script>
 </body>
 </html>
