@@ -8,9 +8,7 @@
   <meta name="description" id="dynamic-description" content="">
 </head>
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous"
-  src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0">
-</script>
+
 <body>
   <div class="embroidery-bg">
     <div class="language-switcher">
@@ -41,20 +39,10 @@
 
   <section id="news">
     <h2 data-i18n="section_news">News</h2>
-    <div class="fb-page"
-         data-href="hhttps://www.facebook.com/qytezavillage"
-         data-tabs="timeline"
-         data-width="500"
-         data-height=""
-         data-small-header="false"
-         data-adapt-container-width="true"
-         data-hide-cover="false"
-         data-show-facepile="true">
-      <blockquote cite="https://www.facebook.com/qytezavillage" class="fb-xfbml-parse-ignore">
-        <a href="https://www.facebook.com/qytezavillage">Facebook</a>
-      </blockquote>
-    </div>
+    
+    <div class="fb-scroll-container" id="fb-posts-container"></div>
   </section>
+  
   
 
   <section id="about">
@@ -143,6 +131,36 @@
     function toggleMenu() {
       document.getElementById('navbar')?.classList.toggle('open');
     }
+
+    async function loadFacebookPosts() {
+      const container = document.getElementById('fb-posts-container');
+
+      try {
+        const res = await fetch('news.json');
+        const posts = await res.json();
+
+        posts.forEach(post => {
+          const div = document.createElement('div');
+          div.className = 'fb-post';
+          div.setAttribute('data-href', post.url);
+          div.setAttribute('data-width', '350');
+          div.setAttribute('data-show-text', 'true');
+          container.appendChild(div);
+        });
+
+        // Re-parse for Facebook SDK
+        if (typeof FB !== 'undefined') {
+          FB.XFBML.parse(container);
+        }
+      } catch (err) {
+        console.error('Failed to load FB posts:', err);
+      }
+    }
+
+    window.fbAsyncInit = function () {
+      FB.init({ xfbml: true, version: 'v18.0' });
+      loadFacebookPosts();
+    };
   
     // Load preferred language or default to Albanian
     window.addEventListener('DOMContentLoaded', () => {
@@ -151,7 +169,12 @@
       const langToLoad = savedLang || browserLang || 'al';
       setSiteLanguage(langToLoad);
     });
+
   </script>
+
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
+
 
 </body>
 </html>

@@ -1,0 +1,30 @@
+<div class="fb-scroll-container" id="fb-posts-container"></div>
+
+<script>
+  async function loadFacebookPosts() {
+    const container = document.getElementById('fb-posts-container');
+
+    try {
+      const res = await fetch('news.json');
+      const posts = await res.json();
+
+      posts.forEach(post => {
+        const div = document.createElement('div');
+        div.className = 'fb-post';
+        div.setAttribute('data-href', post.url);
+        div.setAttribute('data-width', '350');
+        div.setAttribute('data-show-text', 'true');
+        container.appendChild(div);
+      });
+
+      // Re-parse for Facebook SDK
+      if (typeof FB !== 'undefined') {
+        FB.XFBML.parse(container);
+      }
+    } catch (err) {
+      console.error('Failed to load FB posts:', err);
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', loadFacebookPosts);
+</script>
