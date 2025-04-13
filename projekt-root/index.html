@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="title">Organizata Përparimi Qytezë</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="language-switcher embroidery-bg">
+    <button onclick="setLanguage('en')">English</button>
+    <button onclick="setLanguage('al')">Shqip</button>
+  </div>
+
+  <header class="embroidery-bg">
+    <h1 data-i18n="header_title">Organizata Përparimi Qytezë</h1>
+    <p data-i18n="header_sub">Founded in 1923 – For community, culture, and heritage</p>
+  </header>
+
+  <div class="slideshow-placeholder embroidery-bg" data-i18n="slideshow_placeholder">
+    [ Slideshow Placeholder – Add main images or highlights here ]
+  </div>
+
+  <nav class="embroidery-bg">
+    <a href="#news" data-i18n="nav_news">News</a>
+    <a href="#about" data-i18n="nav_about">About Us</a>
+    <a href="#join" data-i18n="nav_join">Join Us</a>
+    <a href="#contact" data-i18n="nav_contact">Contact</a>
+    <a href="#impressum" data-i18n="nav_impressum">Impressum</a>
+  </nav>
+
+  <section id="news">
+    <h2 data-i18n="section_news">News</h2>
+    <div>
+      [ Facebook feed placeholder ]
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 data-i18n="section_about">About Us</h2>
+    <p data-i18n="about_text">[Placeholder for organization history, mission, and leadership]</p>
+  </section>
+
+  <section id="join">
+    <h2 data-i18n="section_join">Join Us</h2>
+    <iframe class="airtable-embed" src="https://airtable.com/embed/YOUR_FORM_ID_HERE" frameborder="0" onmousewheel="" width="100%" height="600" style="background: transparent; border: 1px solid #ccc;"></iframe>
+  </section>
+
+  <section id="contact">
+    <h2 data-i18n="section_contact">Contact</h2>
+    <form action="mailto:tasimenka@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="name" data-i18n-placeholder="form_name" required>
+      <input type="email" name="email" data-i18n-placeholder="form_email" required>
+      <textarea name="message" data-i18n-placeholder="form_message" required></textarea>
+      <button type="submit" data-i18n="form_submit">Send Message</button>
+    </form>
+  </section>
+
+  <section id="impressum">
+    <h2 data-i18n="section_impressum">Impressum</h2>
+    <p data-i18n="impressum_text">[Legal information, registration, and responsible contact]</p>
+  </section>
+
+  <footer class="embroidery-bg">
+    <p>&copy; 2025 <span data-i18n="footer">Organizata Përparimi Qytezë. All rights reserved.</span></p>
+  </footer>
+
+  <script>
+    async function setLanguage(lang) {
+      try {
+        const res = await fetch(`lang/${lang}.json`);
+        const translations = await res.json();
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[key]) el.innerText = translations[key];
+        });
+
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+          const key = el.getAttribute('data-i18n-placeholder');
+          if (translations[key]) el.placeholder = translations[key];
+        });
+
+      } catch (e) {
+        console.error("Translation file not found or invalid JSON", e);
+      }
+    }
+
+    setLanguage('en');
+  </script>
+</body>
+</html>
