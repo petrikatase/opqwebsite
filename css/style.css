@@ -9,9 +9,9 @@ body {
   
   .embroidery-bg {
     background-image: url('../assets/background5.png');
-    background-size: cover;
+    background-size: cover; /* or auto 100vh  / or custom height like auto 15vh */
     background-position: top center;
-    background-repeat: repeat-x;
+    background-repeat: no-repeat /* or repeat-x  / or custom height like auto 15vh */
     background-attachment: fixed;
     position: relative;
     color: black;
