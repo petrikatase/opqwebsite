@@ -42,8 +42,11 @@ body {
   
   
   .hero-buttons {
+    display: flex;
     padding-top: 1.5rem;  /* You can increase to 2rem if you want more space */
-   
+    flex-wrap: wrap;        /* ✅ allows wrapping */
+    gap: 0.5rem;            /* optional: adds space between buttons */
+    justify-content: center;
   }
   
   .hero-button {
@@ -56,10 +59,6 @@ body {
     border-radius: 8px;
     font-weight: bold;
     transition: background 0.3s ease;
-    display: flex;
-    flex-wrap: wrap;        /* ✅ allows wrapping */
-    gap: 0.5rem;            /* optional: adds space between buttons */
-    justify-content: center;
   }
   
   .hero-button:hover {
