@@ -10,6 +10,7 @@ window.imageList = [
     './fotos/slide9.jpg',
     './fotos/slide10.jpg',
     './fotos/slide11.jpg',
-    './fotos/slide12.jpg'
+    './fotos/slide12.jpg',
+    './fotos/slide13.jpg'
   ];
   
