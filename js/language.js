@@ -36,7 +36,10 @@ async function setLanguage(lang) {
     }
 
     // Load membership form
-    setFormUrl(translations.membership_form_url);
+    if (translations.membership_form_url && typeof setFormUrl === 'function') {
+      setFormUrl(translations.membership_form_url);
+    }
+
 
   } catch (err) {
     console.error('❌ Error loading translations or form:', err);
