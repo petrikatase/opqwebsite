@@ -1,8 +1,8 @@
 const basePath = window.location.pathname.includes('/statute/') ? '../lang/' : 'lang/';
-const res = await fetch(basePath + lang + '.json');
+
 async function setLanguage(lang) {
   try {
-    const res = await fetch('/lang/' + lang + '.json');
+    const res = await fetch('./lang/' + lang + '.json');
     const translations = await res.json();
 
     document.title = translations.title;
