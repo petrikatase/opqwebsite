@@ -3,11 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
-  <link href="https://unpkg.com/fullcalendar@6.1.8/main.min.css" rel="stylesheet" />
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="title">Organizata Përparimi Qytezë</title>
   <link rel="stylesheet" href="css/style.css">
   <meta name="description" id="dynamic-description" content="">
+  
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const calendarEl = document.getElementById('calendar')
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        events: {
+          url: 'https://airtable.com/appfL6OvLQDkEJiZx/shrYEJhWiodVjAJRs/iCal?timeZone=Europe%2FBerlin&userLocale=de'
+        }
+      })
+      calendar.render()
+    })
+
+  </script>
+
 </head>
 
 
@@ -62,7 +78,8 @@
 
   <section id="events">
     <h2 data-i18n="section_events">Events</h2>
-    <div id="calendar"></div>
+    <iframe class="airtable-embed" src="https://airtable.com/embed/appfL6OvLQDkEJiZx/shrYEJhWiodVjAJRs?viewControls=on" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+    <!--  <div id="calendar"></div> -->
   </section>
 
 
@@ -114,7 +131,6 @@
     <p>&copy; 2025 <span data-i18n="footer">Organizata Përparimi Qytezë. All rights reserved.</span></p>
   </footer>
 
-  <script src="https://unpkg.com/fullcalendar@6.1.8/main.min.js"></script>
 <script src="./js/language.js"></script>
 <script src="./fotos/slides.js"></script>
 <script src="./js/init-slideshow.js"></script>
@@ -175,16 +191,6 @@
       const browserLang = navigator.language.startsWith('sq') ? 'al' : 'en';
       const langToLoad = savedLang || browserLang || 'al';
       setSiteLanguage(langToLoad);
-
-      const calendarEl = document.getElementById('calendar');
-      const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        events: {
-          url: 'https://airtable.com/appfL6OvLQDkEJiZx/shrYEJhWiodVjAJRs/iCal?timeZone=Europe%2FBerlin&userLocale=de'
-        }
-      });
-      calendar.render();
-
       const listEl = document.querySelector('.splide__list');
       const images = window.imageList || []; // ✅ make sure it's accessible
 
