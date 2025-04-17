@@ -13,7 +13,7 @@ async function setLanguage(lang) {
     const logo = document.getElementById('hero-logo');
     if (logo) {
       const lang = localStorage.getItem('preferredLang') || 'en';
-      logo.src = (lang === 'al') ? './fotos/logo-al.png' : '/fotos/logo-en.png';
+      logo.src = (lang === 'al') ? './fotos/logo-al.png' : './fotos/logo-en.png';
     }
 
 
