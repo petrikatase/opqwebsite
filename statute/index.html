@@ -65,7 +65,8 @@
 <script>
   async function loadStatute(lang) {
     try {
-      const res = await fetch('../lang/statute-' + lang + '.json');
+      const basePath = window.location.pathname.split('/').slice(0, -2).join('/');
+      const res = await fetch(`${basePath}/lang/statute-${lang}.json`);
       const data = await res.json();
       const container = document.getElementById('statute-content');
       container.innerHTML = '';
