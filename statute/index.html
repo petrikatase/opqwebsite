@@ -58,51 +58,55 @@
     <p>&copy; 2025 Organizata Përparimi Qytezë</p>
   </footer>
   
-  <script src="../js/language.js"></script>
-  <script>
-    async function loadStatute(lang) {
-      try {
-        const res = await fetch('../lang/statute-' + lang + '.json');
-        const data = await res.json();
-        const container = document.getElementById('statute-content');
-        container.innerHTML = '';
-  
-        data.sections.forEach(section => {
-          const sectionEl = document.createElement('div');
-          const title = document.createElement('h2');
-          title.textContent = section.title;
-          sectionEl.appendChild(title);
-  
-          section.paragraphs.forEach((paragraph, idx) => {
-            const p = document.createElement('p');
-            p.textContent = `${idx + 1}. ${paragraph}`;
-            sectionEl.appendChild(p);
-          });
-  
-          container.appendChild(sectionEl);
+<!-- language.js must load first -->
+<script src="../js/language.js"></script>
+
+<!-- then your page-specific logic -->
+<script>
+  async function loadStatute(lang) {
+    try {
+      const res = await fetch('../lang/statute-' + lang + '.json');
+      const data = await res.json();
+      const container = document.getElementById('statute-content');
+      container.innerHTML = '';
+
+      data.sections.forEach(section => {
+        const sectionEl = document.createElement('div');
+        const title = document.createElement('h2');
+        title.textContent = section.title;
+        sectionEl.appendChild(title);
+
+        (section.paragraphs || []).forEach((paragraph, idx) => {
+          const p = document.createElement('p');
+          p.textContent = `${idx + 1}. ${paragraph}`;
+          sectionEl.appendChild(p);
         });
-      } catch (err) {
-        console.error('Error loading statute JSON:', err);
-      }
+
+        container.appendChild(sectionEl);
+      });
+    } catch (err) {
+      console.error('Error loading statute JSON:', err);
     }
-  
-    function setSiteLanguage(lang) {
-      localStorage.setItem('preferredLang', lang);
-      setLanguage(lang);          // 🌐 From /js/language.js – updates titles, nav, hero, etc.
-      loadStatute(lang);          // 📜 Loads statute content
+  }
+
+  function setSiteLanguage(lang) {
+    localStorage.setItem('preferredLang', lang);
+    if (typeof setLanguage === 'function') {
+      setLanguage(lang); // from language.js
+    } else {
+      console.warn('⚠️ setLanguage() is not loaded yet');
     }
-  
-    function toggleMenu() {
-      document.getElementById('navbar')?.classList.toggle('open');
-    }
-  
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedLang = localStorage.getItem('preferredLang');
-      const browserLang = navigator.language.startsWith('sq') ? 'al' : 'en';
-      const langToLoad = savedLang || browserLang || 'al';
-      setSiteLanguage(langToLoad);
-    });
-  </script>
+    loadStatute(lang);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('preferredLang');
+    const browserLang = navigator.language.startsWith('sq') ? 'al' : 'en';
+    const langToLoad = savedLang || browserLang || 'al';
+    setSiteLanguage(langToLoad);
+  });
+</script>
+
   
 
 </body>
