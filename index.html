@@ -123,14 +123,14 @@
       iframe.setAttribute('onmousewheel', '');
       container.appendChild(iframe);
     }
+
+    function toggleMenu() {
+      document.getElementById('navbar')?.classList.toggle('open');
+    }
   
     function setSiteLanguage(lang) {
       localStorage.setItem('preferredLang', lang);
       setLanguage(lang);
-    }
-  
-    function toggleMenu() {
-      document.getElementById('navbar')?.classList.toggle('open');
     }
   
     async function loadFacebookPosts() {
