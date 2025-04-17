@@ -89,6 +89,9 @@
       console.error('Error loading statute JSON:', err);
     }
   }
+  function toggleMenu() {
+      document.getElementById('navbar')?.classList.toggle('open');
+  }
 
   function setSiteLanguage(lang) {
     localStorage.setItem('preferredLang', lang);
