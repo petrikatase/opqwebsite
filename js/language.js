@@ -1,4 +1,10 @@
-const basePath = window.location.pathname.includes('/statute/') ? '../lang/' : 'lang/';
+function getBaseURL() {
+  const pathParts = window.location.pathname.split('/');
+  const baseParts = pathParts.includes('statute') ? pathParts.slice(0, -2) : pathParts.slice(0, -1);
+  return baseParts.join('/');
+}
+const res = await fetch(`${getBaseURL()}/lang/${lang}.json`);
+
 
 async function setLanguage(lang) {
   try {
