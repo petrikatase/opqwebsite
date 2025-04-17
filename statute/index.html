@@ -89,10 +89,11 @@
       console.error('Error loading statute JSON:', err);
     }
   }
-  function toggleMenu() {
+
+   function toggleMenu() {
       document.getElementById('navbar')?.classList.toggle('open');
   }
-
+  
   function setSiteLanguage(lang) {
     localStorage.setItem('preferredLang', lang);
     if (typeof setLanguage === 'function') {
