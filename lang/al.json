@@ -1,6 +1,6 @@
 {
-  "title": "Organizata Përparimi Qytezë",
-  "header_title": "Organizata Përparimi Qytezë",
+  "title": "Shoqëria Qytezare Mirëbërëse Përparimi",
+  "header_title": "Shoqëria Qytezare Mirëbërëse Përparimi",
   "header_sub": "Themeluar në vitin 1923 – Për komunitetin, kulturën dhe trashëgiminë",
   "slideshow_placeholder": "[ Vend për Slideshow – Vendosni imazhe ose informacione kryesore këtu ]",
   "nav_news": "Lajme",
@@ -10,15 +10,28 @@
   "nav_impressum": "Impressum",
   "section_news": "Lajme",
   "section_about": "Rreth Nesh",
-  "about_text": "[Vend për historikun, misionin dhe drejtuesit e organizatës]",
+  "about_intro": "Ne jemi një organizatë e përkushtuar për të mbështetur fshatin Qytezë dhe për të bashkuar Qytezarët në mbarë botën. E themeluar në Illinois, vijojmë të ruajmë trashëgiminë tonë kulturore dhe të forcojmë lidhjet tona komunitare.",
+  "about_text": "Shoqata Kulturore dhe Humanitare 'Përparimi' u themelua nga emigrantë shqiptarë në SHBA rreth vitit 1918. Në një periudhë të ndërlikuar për popullin shqiptar, kjo shoqatë shërbeu si një urë lidhëse midis vendlindjes dhe diasporës, duke ofruar ndihmë për përmirësimin e jetës në fshatin Qytezë. Në fillimet e saj, shoqata kontribuoi në ndërtimin e infrastrukturës së rëndësishme si shkolla, ujësjellësi dhe restaurimi i kishave. Pas ndërprerjes gjatë periudhës komuniste, u ringjall në vitet 1992–1995 nga një brez i ri anëtarësh në Shqipëri dhe diasporë. Me miratimin e një statuti zyrtar në Korçë në vitin 1992, shoqata përcaktoi si vizion ruajtjen e identitetit kulturor të Qytezarëve, rindërtimin e lidhjeve familjare dhe nxitjen e aktiviteteve edukative dhe kulturore.",
   "section_join": "Bëhu Anëtar",
   "section_contact": "Kontakt",
   "section_impressum": "Impressum",
-  "impressum_text": "[Informacione ligjore, regjistrimi dhe kontakti zyrtar]",
+  "impressum": {
+    "org_name": "Shoqata Qytezare Përparimi",
+    "registration": "Shoqatë Jo-Fitimprurëse – Shteti i Illinois",
+    "file_number": "Numri i Dosjes së Korporatës: N 2700-444-0",
+    "address": "398 Crestwood Rd, Wood Dale, IL 60191, SHBA",
+    "email" : "contact@organizata.org"
+  }, 
   "form_name": "Emri juaj",
   "form_email": "Email-i juaj",
   "form_message": "Mesazhi juaj",
   "form_submit": "Dërgo Mesazhin",
-  "footer": "Organizata Përparimi Qytezë. Të gjitha të drejtat e rezervuara.",
-  "membership_form_url": "https://airtable.com/embed/appfL6OvLQDkEJiZx/pagktXzFqQbhwankt/form"
+  "footer": "Shoqata Qytezare Përparimi. Të gjitha të drejtat e rezervuara.",
+  "membership_form_url": "https://airtable.com/embed/appfL6OvLQDkEJiZx/pagktXzFqQbhwankt/form",
+  "header_more": "Më shumë rreth nesh",
+  "header_contact": "Na kontaktoni",
+  "section_help": "Na Ndihmo",
+  "join_donation_button": "Bëj një Donacion",
+  "join_membership_button": "Bëhu Anëtar",
+  "donation_placeholder": "Instruksionet për donacion do të shtohen së shpejti."
 }
