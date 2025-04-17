@@ -10,6 +10,13 @@ async function setLanguage(lang) {
     document.title = translations.title;
     document.getElementById('dynamic-description')?.setAttribute('content', translations.description);
 
+    const logo = document.getElementById('hero-logo');
+    if (logo) {
+      const lang = localStorage.getItem('preferredLang') || 'en';
+      logo.src = (lang === 'al') ? './fotos/logo-al.png' : '/fotos/logo-en.png';
+    }
+
+
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (translations[key]) el.textContent = translations[key];
