@@ -1,12 +1,10 @@
-const pathRoot = window.location.pathname.includes('/statute/')
-  ? window.location.pathname.split('/').slice(0, -2).join('/')
-  : window.location.pathname.split('/').slice(0, -1).join('');
-
-const res = await fetch(`${pathRoot}/lang/${lang}.json`);
-
 async function setLanguage(lang) {
   try {
-    const res = await fetch('./lang/' + lang + '.json');
+    const pathParts = window.location.pathname.split('/');
+    const baseParts = pathParts.includes('statute') ? pathParts.slice(0, -2) : pathParts.slice(0, -1);
+    const basePath = baseParts.join('/');
+
+    const res = await fetch(`${basePath}/lang/${lang}.json`);
     const translations = await res.json();
 
     document.title = translations.title;
