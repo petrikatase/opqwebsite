@@ -4,8 +4,6 @@ const pathRoot = window.location.pathname.includes('/statute/')
 
 const res = await fetch(`${pathRoot}/lang/${lang}.json`);
 
-
-
 async function setLanguage(lang) {
   try {
     const res = await fetch('./lang/' + lang + '.json');
