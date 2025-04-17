@@ -42,11 +42,7 @@ body {
   
   
   .hero-buttons {
-    display: flex;
     padding-top: 1.5rem;  /* You can increase to 2rem if you want more space */
-    flex-wrap: wrap;        /* ✅ allows wrapping */
-    gap: 0.5rem;            /* optional: adds space between buttons */
-    justify-content: center;
   }
   
   .hero-button {
@@ -229,6 +225,13 @@ body {
       text-align: center;
     }
 
+    .hero-buttons {
+        display: flex;
+        padding-top: 1.5rem;  /* You can increase to 2rem if you want more space */
+        flex-wrap: wrap;        /* ✅ allows wrapping */
+        gap: 0.5rem;            /* optional: adds space between buttons */
+        justify-content: center;
+    }
     .embroidery-bg {
         background-image: url('../assets/background2.png');
         background-size: auto 83vh;
