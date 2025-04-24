@@ -38,8 +38,12 @@ async function setLanguage(lang) {
       if (file) file.textContent = imp.file_number;
       const addr = document.getElementById('imp-address');
       if (addr) addr.textContent = imp.address;
+      const president = document.getElementById('imp-president');
+      if (president) president.textContent = imp.president;
       const email = document.getElementById('imp-email');
       if (email) email.textContent = imp.email;
+      console.log('President loaded:', imp?.president);
+      
     }
 
     // Load membership form
