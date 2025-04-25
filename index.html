@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="al">
 <head>
+  <meta name="google-site-verification" content="WsbWe0Wijrhr1jv7Nc-Yj0RzAz6Kdz21KhLhT4YMoY8" />
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
@@ -109,12 +110,29 @@
 
   <section id="contact">
     <h2 data-i18n="section_contact">Contact</h2>
-    <form action="mailto:info@shoqataqytezare.org" method="post" enctype="text/plain">
+    <form name="contact" netlify>
+      <p>
+        <label for="form-name" data-i18n="form_name">Name</label>
+        <input type="text" id="form-name" name="name" />
+      </p>
+      <p>
+        <label data-i18n="form_email"> </labeldata-i18n> </label>
+        <input type="email" name="email" />
+      </p>
+      <p>
+        <label for="form-message" data-i18n="form_message">Message</label>
+        <textarea id="form-message" name="message"></textarea>
+      </p>
+      <p>
+        <button type="submit">Send</button>
+      </p>
+    </form>
+    <!--<form action="mailto:info@shoqataqytezare.org" method="post" enctype="text/plain">
       <input type="text" name="name" data-i18n-placeholder="form_name" required>
       <input type="email" name="email" data-i18n-placeholder="form_email" required>
       <textarea name="message" data-i18n-placeholder="form_message" required></textarea>
       <button type="submit" data-i18n="form_submit">Send Message</button>
-    </form>
+    </form>-->
   </section>
 
   <section id="impressum">
