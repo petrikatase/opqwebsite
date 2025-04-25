@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.shoqataqytezare.org/</loc>
+    <loc>https://shoqataqytezare.org/</loc>
     <lastmod>2025-04-13</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://www.shoqataqytezare.org/#news</loc>
+    <loc>https://shoqataqytezare.org/#news</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.shoqataqytezare.org/#events</loc>
+    <loc>https://shoqataqytezare.org/#events</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.shoqataqytezare.org/#about</loc>
+    <loc>https://shoqataqytezare.org/#about</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.shoqataqytezare.org/#join</loc>
+    <loc>https://shoqataqytezare.org/#join</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.shoqataqytezare.org/#contact</loc>
+    <loc>https://shoqataqytezare.org/#contact</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.shoqataqytezare.org/statute</loc>
+    <loc>https://shoqataqytezare.org/statute</loc>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.shoqataqytezare.org/#impressum</loc>
+    <loc>https://shoqataqytezare.org/#impressum</loc>
     <priority>0.5</priority>
   </url>
 </urlset>
