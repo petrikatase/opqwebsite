@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shoqataqytezare.org/sitemap.xml
+Sitemap: https://www.shoqataqytezare.org/sitemap.xml
